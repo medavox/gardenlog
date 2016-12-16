@@ -1,7 +1,8 @@
 package com.medavox.gardenlog.datastructs;
 
 /**
- * @author Adam Howard on 13/12/2016.
+ * @author Adam Howard
+ * @date 13/12/2016
  */
 
 public class Weather {
