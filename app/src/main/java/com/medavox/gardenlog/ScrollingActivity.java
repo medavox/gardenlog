@@ -10,15 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class ScrollingActivity extends AppCompatActivity {
-/**List of Activities:
- * List of gardens
- * list of gardeners attached to that garden
- * list of beds in that garden
- * list of plants in that bed
- * most recent activity in the garden
- * recent weather in the garden's area
- * list of plants being grown in the garden
- *
+/**
  * what activity might need doing (built from TODOs and plant lifecycles -
  * ie at this time of year you should dead-head the marigolds etc)
  * */

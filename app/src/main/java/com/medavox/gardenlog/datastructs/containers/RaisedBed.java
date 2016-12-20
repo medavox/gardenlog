@@ -4,9 +4,7 @@ import android.location.Location;
 
 /**
  * @author Adam Howard
- * @date 16/12/2016
- */
-
+ * @date 16/12/2016 */
 public class RaisedBed extends PlantContainer {
     @Override
     public Location getContainerLocation() {
