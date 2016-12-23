@@ -15,10 +15,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     private void createTable(SQLiteDatabase db, DbContracts.TableDef tableDef) {
-        String sql = "CREATE TABLE " + tableDef.getTableName() + " (";
+        String sql = "CREATE TABLE " + tableDef.getTableName() + " ( ";
         sql += tableDef._ID + " INTEGER PRIMARY KEY";
-        for(String[] columnPair : tableDef.getColumnNameTypePairs()) {
-            sql += ", "+columnPair[0] +" "+ columnPair[1];
+        for(String columnDef : tableDef.getColumDefinitions()) {
+            sql += ", "+columnDef;
         }
             sql += " )";
         db.execSQL(sql);

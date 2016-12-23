@@ -7,5 +7,5 @@ import android.app.Activity;
  * @date 19/12/2016
  */
 
-public class RecordNewActivityActivity extends Activity {
+public class RecordNewActionActivity extends Activity {
 }

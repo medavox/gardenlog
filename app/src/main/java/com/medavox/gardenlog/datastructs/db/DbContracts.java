@@ -33,34 +33,56 @@ public class DbContracts {
      * */
 
     public static DBTable[] tables = new DBTable[] {
-        new DBTable("Action List",
-                "gardener", "TEXT",
-                "action taken", "TEXT",//maybe an enum?
-                "datetime", "LONG"),
+        new DBTable("Actions_Taken",
+                "gardener TEXT",//foreign key to a gardener
+                "actiontaken TEXT",//maybe an enum?
+                "datetime LONG",
+                "pertaining_to "),//foreign key to the affected plant/container
 
             new DBTable("Weather",
-                    "weather", "INTEGER",
-                    "timestsmp", "TEXT",
-                    "intensity", "INTEGER")
+                    "weather INTEGER NOT NULL",
+                    "timestamp TEXT",
+                    "intensity INTEGER"),
+
+            new DBTable("Gardens",
+                    "garden name",
+                    "location",
+                    "members",//list of gardeners???
+                    "area_plan BLOB"),//either a picture or some kind of vector format for floorplans
+
+            new DBTable("Gardeners",
+                    "name TEXT",
+                    "email TEXT",//maybe??
+                    "picture BLOB" ),
+
+            new DBTable("Plants",
+                    "scientific_name TEXT",
+                    "variety TEXT",
+                    "contained_in " ),//foreign key to the relevant container
+            //plant's history can be derived from listings in the actions_taken table;
+            //listing from there which have the same container or plant ID relate to it
+
+            new DBTable("Containers",//plants know which container they're in;
+                    // containers don't know which plants consider themselves inside them. SQL!
+                    "in_garden TEXT",//foreign key to the garden it's in
+                    "container_type "//basically an enum: foreign key to entry in table CONTAINER_TYPES
+                    ),
+            new DBTable("CONTAINER_TYPES",
+                    "name NOT NULL UNIQUE"),
+            new DBTable("Gardeners")
+
     };
 
     /** Each inner class defines a table name and its columns*/
     public static class DBTable implements TableDef {
         private String tableName;
-        private String[][] columnPairs;
+        private String[] columnDefs;
 
         private DBTable() { throw new IllegalStateException("nope!");}
 
         public DBTable(@NonNull String tableName, String... inputPairs) {
-            if(columnPairs.length < 2 || (columnPairs.length % 2 ) != 0 ) {
-                throw new IllegalArgumentException("incorrect number of column pairs." +
-                        "Number of column strings passed: "+columnPairs.length);
-            }
             this.tableName = tableName;
-            this.columnPairs = new String[inputPairs.length/2][];
-            for(int i = 0; i < inputPairs.length; i += 2) {
-                columnPairs[i/2] = new String[] {inputPairs[i], inputPairs[i+1]};
-            }
+            this.columnDefs = inputPairs;
         }
 
         @Override
@@ -69,14 +91,14 @@ public class DbContracts {
         }
 
         @Override
-        public String[][] getColumnNameTypePairs() {
-            return columnPairs;
+        public String[] getColumDefinitions() {
+            return columnDefs;
         }
     }
 
     public interface TableDef extends BaseColumns {
         String getTableName();
-        String[][] getColumnNameTypePairs();
+        String[] getColumDefinitions();
     }
 
 }

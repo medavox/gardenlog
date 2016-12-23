@@ -18,5 +18,7 @@ public class TimeDuration {
 
     @IntRange(from=1, to=366)
     private int dayOfYear;
-    public TimeDuration()
+    public TimeDuration() {
+
+    }
 }
