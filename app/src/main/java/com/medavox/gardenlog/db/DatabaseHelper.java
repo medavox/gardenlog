@@ -1,6 +1,7 @@
-package com.medavox.gardenlog.datastructs.db;
+package com.medavox.gardenlog.db;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -29,13 +30,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        for(DbContracts.DBTable dbt : DbContracts.tables) {
+        for(String s: DbContracts.tables.keySet()) {//fixme: coupling!
+            DbContracts.DBTable dbt = DbContracts.tables.get(s);
             createTable(db, dbt);
         }
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVer, int newVer) {
+        //todo:implement something!
+    }
 
+    public Cursor getRecentActions() {
+        return getReadableDatabase().query(
+                DbContracts.ACTIONS_TAKEN,
+                //String[] columns
+                //String selection
+                //String[] selectionArgs
+                //String groupBy
+                null, //String having
+                //String orderBy
+                3 //String limit
+        );
     }
 }

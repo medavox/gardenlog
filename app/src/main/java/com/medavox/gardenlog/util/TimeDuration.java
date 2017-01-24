@@ -13,7 +13,8 @@ public class TimeDuration {
     public static enum SpecialDates {
         LAST_FROST,
         FIRST_FROST,
-        GROUND_FREEZES
+        GROUND_FREEZES,
+        GROUND_THAWS
     }
 
     @IntRange(from=1, to=366)

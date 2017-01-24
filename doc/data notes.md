@@ -1,4 +1,7 @@
-Need to record what was done, what worked, what didn't.
+Need to record:-
+what was done, 
+what worked, what didn't.
+what needs doing in the future
 
 Garden Climate Data
 ---

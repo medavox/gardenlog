@@ -7,6 +7,6 @@ import android.app.Fragment;
  * @date 19/12/2016
  */
 
-/**most recent activity in the garden*/
+/**Most recent activity in the garden*/
 public class RecentActivityFragment extends Fragment {
 }
