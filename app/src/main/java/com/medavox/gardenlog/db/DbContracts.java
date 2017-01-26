@@ -48,38 +48,20 @@ public class DbContracts {
     //public static DBTable[] tables = new DBTable[] {
     public static Map<String, DBTable> tables = new HashMap<String, DBTable>();
     static {
+
         tables.put(ACTIONS_TAKEN, new DBTable(ACTIONS_TAKEN,
-                "gardener TEXT",//foreign key to a gardener
-                "action_taken TEXT",//maybe an enum?
+                "FOREIGN KEY(gardener) REFERENCES "+GARDENERS+"(id)",
+                "FOREIGN KEY(action_taken) REFERENCES "+ACTION_TYPES+"(id)",//an enum
                 "datetime LONG",
-                "pertaining_to "));//foreign key to the affected plant/container
+                "FOREIGN KEY(pertaining_to) REFERENCES "+CONTAINERS+"(id)"));//the affected plant/container
 
 
         tables.put(ACTIONS_TO_DO, new DBTable(ACTIONS_TO_DO,
-                "action_to_take ",//same as whatever action_taken becomes
+                "FOREIGN KEY(action_to_take) REFERENCES "+ACTION_TYPES+"(id)",//an enum
                 "earliest_time LONG",
-                "latest_time LONG"));
+                "latest_time LONG NOT NULL"));
 
-        tables.put(WEATHER, new DBTable(WEATHER,
-                "weather INTEGER NOT NULL",
-                "timestamp LONG NOT NULL",
-                "intensity INTEGER"));
-
-        tables.put(GARDEN_PLOTS, new DBTable(GARDEN_PLOTS,
-                "garden_name TEXT NOT NULL",
-                "location",//optional. although  the following would be useful :
-                // approximate latitude,
-                // rough distance from coastline,
-                //and whether that is an easterly or westerly coast (or north/south)
-                "members",//foreign key to programmatically made table of gardeners
-                "biome TEXT",
-                "area_plan BLOB"));//optional picture or some kind of vector format for floorplans
-
-        tables.put(GARDENERS, new DBTable(GARDENERS,
-                "name TEXT NOT NULL",
-                "email TEXT",//maybe??
-                "picture BLOB"));
-
+        //TODO:this table's schema
         tables.put(PLANTS, new DBTable(PLANTS,
                 "scientific_name TEXT NOT NULL",
                 "common_name TEXT NOT NULL",
@@ -88,16 +70,22 @@ public class DbContracts {
                 //plant's history can be derived from listings in the actions_taken table;
                 //listing from there which have the same container or plant ID relate to it
 
+        //TODO:this table's schema
         tables.put(CONTAINERS, new DBTable(CONTAINERS,//plants know which container they're in;
                 // containers don't know which plants consider themselves inside them. SQL!
-                "in_garden TEXT",//foreign key to the garden it's in
+                "name TEXT",//maybe optional
+                "description TEXT",//definitely optional
+
+                "FOREIGN KEY(in_garden) REFERENCES "+GARDEN_PLOTS+"(id)",//the garden it's in
                 "container_type "));//basically an enum: foreign key to entry in table CONTAINER_TYPES
 
 
+        //TODO:this table's schema
         //Immutable tables; used as enums
         tables.put(CONTAINER_TYPES, new DBTable(CONTAINER_TYPES,
                         "name NOT NULL UNIQUE"));
 
+        //TODO:this table's schema
         tables.put(ACTION_TYPES, new DBTable(ACTION_TYPES,
                 "name NOT NULL UNIQUE"
                 ));
@@ -110,7 +98,7 @@ public class DbContracts {
 
         private DBTable() { throw new IllegalStateException("nope!");}
 
-        public DBTable(@NonNull String tableName, String... colDefs) {
+        public DBTable(@Required String tableName, String... colDefs) {
             this.tableName = tableName;
             this.columnDefs = colDefs;
         }

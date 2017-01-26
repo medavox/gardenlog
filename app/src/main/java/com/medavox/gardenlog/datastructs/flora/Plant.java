@@ -6,19 +6,28 @@ package com.medavox.gardenlog.datastructs.flora;
 
 import android.support.annotation.Nullable;
 
-import java.util.Set;
+import com.medavox.gardenlog.datastructs.PlantContainer;
+
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.Required;
 
 /**Data structure of containing info about a plant being grown*/
-public abstract class Plant {
+public abstract class Plant extends RealmObject {
+
+    @Required
     private String scientificName;
-    private Set<String> commonName;
+
+    private RealmList<CommonName> commonNames;
 
     @Nullable
     private String variety;
 
-    //private Image picture;
+    private PlantContainer containedIn;
 
-    /**Any of the following picture (whichever are applicable)
+    //todo:
+    //private Image picture;
+    /**Any//all of the following picture (whichever are applicable)
      * picture of seeds
      * picture of seedling
      * picture of adult plant

@@ -42,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //todo:implement something!
     }
 
-    public Cursor getRecentActions() {
+    /*public Cursor getRecentActions() {
         return getReadableDatabase().query(
                 DbContracts.ACTIONS_TAKEN,
                 //String[] columns
@@ -53,5 +53,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 //String orderBy
                 3 //String limit
         );
-    }
+    }*/
 }
