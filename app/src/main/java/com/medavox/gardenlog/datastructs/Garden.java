@@ -24,7 +24,6 @@ public class Garden extends RealmObject {
 
     //"biome TEXT",//a simpler alternative to the vaguefied location info
 
-
     /**optional picture or some kind of vector format for floorplans*/
     @Nullable
     private byte[] areaPlan;
@@ -37,10 +36,37 @@ public class Garden extends RealmObject {
      rough distance from coastline,
      and whether that is an easterly or westerly coast (or north/south)*/
     @Nullable
-    private Location location;
+    private double latitude;
+    private double longitude;
 
     private RealmList<PlantContainer> gardenContainers;
 
     private RealmList<Gardener> associatedMembers;
 
+    @Nullable
+    public byte[] getAreaPlan() {
+        return areaPlan;
+    }
+
+    @Nullable
+    public String getAreaPlanMimeType() {
+        return areaPlanMimeType;
+    }
+
+    public RealmList<Gardener> getAssociatedMembers() {
+        return associatedMembers;
+    }
+
+    public RealmList<PlantContainer> getGardenContainers() {
+        return gardenContainers;
+    }
+/*TODO; reimplement using lat and long numbers
+    @Nullable
+    public Location getLocation() {
+        return location;
+    }
+*/
+    public String getName() {
+        return name;
+    }
 }

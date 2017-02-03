@@ -11,12 +11,11 @@ import io.realm.annotations.Required;
  */
 
 public class Weather extends RealmObject {
-    @Required
     private long timestamp;
     private short intensity;
 
     @Required
-    private Type weatherType;
+    private String weatherType;
 
     public enum Type {
         RAINING,

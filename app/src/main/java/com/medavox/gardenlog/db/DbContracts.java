@@ -98,7 +98,7 @@ public class DbContracts {
 
         private DBTable() { throw new IllegalStateException("nope!");}
 
-        public DBTable(@Required String tableName, String... colDefs) {
+        public DBTable(String tableName, String... colDefs) {
             this.tableName = tableName;
             this.columnDefs = colDefs;
         }

@@ -8,7 +8,7 @@ import android.support.annotation.IntRange;
  */
 
 public class GardenTimePoint {
-    public static enum
+    //public static enum
     public static GardenTimePoint AFTER_LAST_FROST;
     public static GardenTimePoint BEFORE_FIRST_FROST;
 

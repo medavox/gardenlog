@@ -10,10 +10,17 @@ import io.realm.Realm;
  */
 
 public class MyApp extends Application {
+    private static Realm realm;
     @Override
     public void onCreate() {
         super.onCreate();
         // Initialize Realm. Should only be done once when the application starts.
         Realm.init(this);
+    }
+    public static Realm getRealm() {
+        if(realm == null){
+            realm = Realm.getDefaultInstance();
+        }
+        return realm;
     }
 }

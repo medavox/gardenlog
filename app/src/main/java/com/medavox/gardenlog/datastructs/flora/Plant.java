@@ -13,7 +13,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.Required;
 
 /**Data structure of containing info about a plant being grown*/
-public abstract class Plant extends RealmObject {
+public class Plant extends RealmObject {
 
     @Required
     private String scientificName;
@@ -24,6 +24,21 @@ public abstract class Plant extends RealmObject {
     private String variety;
 
     private PlantContainer containedIn;
+
+    //needs to be a string instread of an enumm, because Realm doesn't support enums
+    private String type;
+
+    public Type getType() {
+        return Type.valueOf(type);
+    }
+
+    public enum Type {
+        TREE,
+        PLANT,
+        BUSH,
+    }
+
+    //todo: enum of type of plant: tree, bush etc
 
     //todo:
     //private Image picture;
