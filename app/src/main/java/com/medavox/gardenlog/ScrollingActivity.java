@@ -1,12 +1,13 @@
 package com.medavox.gardenlog;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.medavox.gardenlog.ui.GardensFragment;
+import com.medavox.gardenlog.ui.GardensActivity;
 
 public class ScrollingActivity extends AppCompatActivity {
 /**
@@ -20,6 +21,8 @@ public class ScrollingActivity extends AppCompatActivity {
         //setContentView(new GardensFragment());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        startActivity(new Intent(this, GardensActivity.class));
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

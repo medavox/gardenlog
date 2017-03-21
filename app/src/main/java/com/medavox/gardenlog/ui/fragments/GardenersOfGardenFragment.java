@@ -1,4 +1,4 @@
-package com.medavox.gardenlog.ui;
+package com.medavox.gardenlog.ui.fragments;
 
 import android.app.Fragment;
 

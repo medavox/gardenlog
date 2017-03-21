@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <fragment android:name="com.medavox.gardenlog.ui.GardensFragment"
+    <fragment android:name="com.medavox.gardenlog.ui.fragments.GardensFragment"
         android:id="@+id/list"
         android:layout_weight="1"
         android:layout_width="0dp"
