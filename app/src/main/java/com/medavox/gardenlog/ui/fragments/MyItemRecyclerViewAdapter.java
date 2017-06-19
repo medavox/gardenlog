@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.medavox.gardenlog.R;
 import com.medavox.gardenlog.ui.fragments.ListFragment.OnListFragmentInteractionListener;
 import com.medavox.gardenlog.ui.fragments.dummy.DummyContent.DummyItem;
 
